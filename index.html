@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pablo Explorer</title>
+    <style>
+        body {
+            background-color: #f5f5f5; /* Color de fondo */
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        #container {
+            background-color: #333; /* Color del encabezado */
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        #searchBox {
+            width: 80%;
+            max-width: 500px; /* Tamaño máximo */
+            padding: 10px;
+            margin: 20px auto; /* Centrar en pantalla */
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            background-color: #fff; /* Color de fondo del recuadro de búsqueda */
+            color: #333; /* Color del texto del recuadro de búsqueda */
+        }
+        
+        #searchBox:focus {
+            outline: none;
+            border-color: #007bff; /* Color de borde cuando está enfocado */
+        }
+        
+        #searchBox::placeholder {
+            color: #999; /* Color del texto de marcador de posición */
+        }
+        
+        #searchButton {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #007bff; /* Color del botón de búsqueda */
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        #searchButton:hover {
+            background-color: #0056b3; /* Color del botón de búsqueda al pasar el mouse */
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Pablo Explorer</h1>
+        <input type="text" id="searchBox" placeholder="Buscar en Google">
+        <button id="searchButton">Buscar</button>
+    </div>
+
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function() {
+            var query = document.getElementById('searchBox').value.trim();
+            if (query !== '') {
+                window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
+            }
+        });
+
+        // También puedes realizar la búsqueda cuando se presiona Enter en el cuadro de búsqueda
+        document.getElementById('searchBox').addEventListener('keypress', function(event) {
+            if (event.keyCode === 13) {
+                document.getElementById('searchButton').click();
+            }
+        });
+    </script>
+</body>
+</html>
